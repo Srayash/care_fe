@@ -243,11 +243,7 @@ export const PatientHome = (props: any) => {
   };
 
   const isPatientEligibleForNewConsultation = (patientData: PatientModel) => {
-    return patientData.is_active &&
-      (!patientData?.last_consultation ||
-        patientData?.last_consultation?.discharge_date)
-      ? true
-      : false;
+    return patientData.is_active ? true : false;
   };
 
   return (
@@ -1066,7 +1062,7 @@ export const PatientHome = (props: any) => {
                   "w-full rounded-lg border",
                   isPatientEligibleForNewConsultation(patientData)
                     ? "cursor-pointer border-green-700 hover:bg-primary-400"
-                    : "border-secondary-700 text-secondary-700 hover:cursor-not-allowed",
+                    : "hidden border-secondary-700 text-secondary-700 hover:cursor-not-allowed",
                 )}
                 onClick={() =>
                   isPatientEligibleForNewConsultation(patientData) &&
