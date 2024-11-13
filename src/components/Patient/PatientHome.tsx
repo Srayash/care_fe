@@ -241,10 +241,15 @@ export const PatientHome = (props: any) => {
       !(patientData?.last_consultation?.facility === facilityId)
     );
   };
+  // Commented out as this is no longer used should I completely remove this?
 
-  const isPatientEligibleForNewConsultation = (patientData: PatientModel) => {
-    return patientData.is_active ? true : false;
-  };
+  // const isPatientEligibleForNewConsultation = (patientData: PatientModel) => {
+  //   return patientData.is_active &&
+  //     (!patientData?.last_consultation ||
+  //       patientData?.last_consultation?.discharge_date)
+  //     ? true
+  //     : false;
+  // };
 
   return (
     <Page
@@ -674,7 +679,6 @@ export const PatientHome = (props: any) => {
                 )}
                 <div>
                   <ButtonV2
-                    id="update-patient-details"
                     className="mt-4 w-full"
                     disabled={!patientData.is_active}
                     authorizeFor={NonReadOnlyUsers}
@@ -1057,49 +1061,6 @@ export const PatientHome = (props: any) => {
         <section className="mt-4 space-y-2 md:flex">
           <div className="hidden lg:block">
             <div className="mt-4 grid grid-cols-6 gap-5 xl:grid-cols-7">
-              <div
-                className={classNames(
-                  "w-full rounded-lg border",
-                  isPatientEligibleForNewConsultation(patientData)
-                    ? "cursor-pointer border-green-700 hover:bg-primary-400"
-                    : "hidden border-secondary-700 text-secondary-700 hover:cursor-not-allowed",
-                )}
-                onClick={() =>
-                  isPatientEligibleForNewConsultation(patientData) &&
-                  navigate(
-                    `/facility/${patientData?.facility}/patient/${id}/consultation`,
-                  )
-                }
-              >
-                <div
-                  className={classNames(
-                    "h-full space-y-2 rounded-lg bg-white p-4 shadow",
-                    isPatientEligibleForNewConsultation(patientData) &&
-                      "hover:bg-secondary-200",
-                  )}
-                >
-                  <div
-                    className={classNames(
-                      "text-center",
-                      isPatientEligibleForNewConsultation(patientData) &&
-                        "text-green-700",
-                    )}
-                  >
-                    <span>
-                      <CareIcon
-                        icon="l-chat-bubble-user"
-                        className="text-5xl"
-                      />
-                    </span>
-                  </div>
-
-                  <div>
-                    <p className="text-center text-sm font-medium">
-                      Add Consultation
-                    </p>
-                  </div>
-                </div>
-              </div>
               <div
                 className="w-full"
                 onClick={() => navigate(`/patient/${id}/investigation_reports`)}
