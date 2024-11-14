@@ -1242,28 +1242,6 @@ export const PatientHome = (props: any) => {
                 <div>
                   <ButtonV2
                     className="w-full"
-                    disabled={
-                      !(
-                        patientData.is_active &&
-                        (!patientData?.last_consultation ||
-                          patientData?.last_consultation?.discharge_date)
-                      )
-                    }
-                    onClick={() =>
-                      navigate(
-                        `/facility/${patientData?.facility}/patient/${id}/consultation`,
-                      )
-                    }
-                  >
-                    <span className="flex w-full items-center justify-start gap-2">
-                      <CareIcon icon="l-chat-bubble-user" className="text-xl" />
-                      Add Consultation
-                    </span>
-                  </ButtonV2>
-                </div>
-                <div>
-                  <ButtonV2
-                    className="w-full"
                     onClick={() =>
                       navigate(`/patient/${id}/investigation_reports`)
                     }
