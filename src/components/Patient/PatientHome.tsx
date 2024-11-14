@@ -241,15 +241,6 @@ export const PatientHome = (props: any) => {
       !(patientData?.last_consultation?.facility === facilityId)
     );
   };
-  // Commented out as this is no longer used should I completely remove this?
-
-  // const isPatientEligibleForNewConsultation = (patientData: PatientModel) => {
-  //   return patientData.is_active &&
-  //     (!patientData?.last_consultation ||
-  //       patientData?.last_consultation?.discharge_date)
-  //     ? true
-  //     : false;
-  // };
 
   return (
     <Page
